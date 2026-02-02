@@ -16,7 +16,6 @@ The datasets provided for this project, available via Zenodo, correspond to body
 The main branch of the project contains five files and two directories:
 
 ### Files
-- **args.py**: Contains arguments to configure the network architecture such as dropout, number of layers, units per layer, number of epochs, learning rate, etc.
 - **requirements.txt**: Lists packages required for the project to function.
 - **download.py**: Script to download CARACOR-GNN dataset and pretrained models from Zenodo.
 - **test.py**: Script for testing models saved in the `models/` directory.

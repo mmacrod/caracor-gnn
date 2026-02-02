@@ -3,7 +3,7 @@ test.py
 
 Testing entrypoint for CARACOR-GNN pretrained models.
 
-This script loads an LMDB test split, restores a pretrained checkpoint from `models/`,
+This script loads a dataset test split, restores a pretrained checkpoint from `models/`,
 and reports classification metrics (confusion matrix, accuracy, and per-class scores).
 """
 
@@ -12,7 +12,7 @@ import sys
 import torch
 
 from scripts.gnn_arc import GNNmodel
-from scripts.utils import load_dataset, save_model, read_configuration_file, test
+from scripts.utils import load_dataset, read_configuration_file, test
 from scripts.args import get_args
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -31,9 +31,9 @@ def main(args):
     print()
     print('Loading dataset...')
 
-    _, _, test_loader = load_dataset(root=f"datasets",
-                                    batch_size=args.batch_size,
-                                    test_filename=args.testset_name)
+    test_loader = load_dataset(root=f"datasets",
+                                test_filename=args.testset_name,
+                                batch_size=args.batch_size)
 
     ##############################
     # Load model
@@ -48,12 +48,8 @@ def main(args):
 
     model = GNNmodel(args).to(device)
     model_state = torch.load(f"models/model_{args.model_name}.pth")
-
     model.load_state_dict(model_state)
-    print()
-    print("Model architecture:")
-    print(model)
-    
+
     ##############################
     # Test
     print()

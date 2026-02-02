@@ -9,13 +9,13 @@ Script to download CARACOR-GNN datasets and pretrained models from Zenodo.
 
 import os
 import requests
+import zipfile
 
-
-DATASETS_URL = "https://zenodo.org/record/XXXXXX/files/dataset.zip?download=1"
+DATASETS_URL = "https://zenodo.org/record/18457640/files/dataset.zip?download=1"
 MODELS_URL = "https://zenodo.org/record/XXXXXX/files/models.zip?download=1"
 
 
-def download_file(url, output_dir, filename):
+def download_and_extract(url, output_dir, filename):
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, filename)
 
@@ -28,21 +28,29 @@ def download_file(url, output_dir, filename):
             if chunk:
                 f.write(chunk)
 
-    print(f"Saved to {output_path}\n")
+
+    # ---- Extract ----
+    with zipfile.ZipFile(output_path, "r") as zip_ref:
+        zip_ref.extractall(output_dir)
+
+    # Delete compressed file
+    os.remove(output_path)
+
+    print(f"Dataset saved to {output_dir}")
 
 
 def main():
-    download_file(
+    download_and_extract(
         url=DATASETS_URL,
-        output_dir="datasets",
+        output_dir="datasets/processed",
         filename="datasets.zip",
     )
 
-    download_file(
-        url=MODELS_URL,
-        output_dir="models",
-        filename="models.zip",
-    )
+    # download_file(
+    #     url=MODELS_URL,
+    #     output_dir="models",
+    #     filename="models.zip",
+    # )
 
 
 if __name__ == "__main__":

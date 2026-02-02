@@ -10,27 +10,28 @@
 
 ## Overview
 The CARACOR-GNN model uses Graph Neural Networks to classify the density and location of atrial cardiomyopathy, facilitating advanced cardiac analysis. This document guides you through the setup and use of the CARACOR-GNN for different classification tasks.
+The datasets provided for this project, available via Zenodo, correspond to body surface potential maps (BSPMs) acquired with 128 electrodes, with no missing electrodes and noise-free signals (infinite signal-to-noise ratio, SNR). These datasets are intended to serve as reference data for reproducible and controlled experimental evaluation. The datasets and pretrained models are available at Zenodo (10.5281/zenodo.18457640).
 
 ## Project Structure
 The main branch of the project contains five files and two directories:
 
 ### Files
 - **args.py**: Contains arguments to configure the network architecture such as dropout, number of layers, units per layer, number of epochs, learning rate, etc.
-- **utils.py**: Utility script containing functions needed for `train.py` and `test.py`.
-- **train.py**: Script for training the model.
-- **test.py**: Script for testing models saved in the `models/` directory.
 - **requirements.txt**: Lists packages required for the project to function.
+- **download.py**: Script to download CARACOR-GNN dataset and pretrained models from Zenodo.
+- **test.py**: Script for testing models saved in the `models/` directory.
 
 ### Directories
 - **datasets/**: Contains `dataset_reader.py` for reading the graph dataset and a `processed/` subdirectory for storing processed datasets.
-- **model/**: Contains `gnn_arc.py` with the GNN network architecture and `.pth` and `.yaml` files with the saved trained models. Includes pretrained models `model_den` for density classification and `model_loc` for location classification.
+- **models/**: Contains `.pth` and `.yaml` files with the saved trained models. Includes pretrained models `model_den` for density classification and `model_loc` for location classification.
+- **scripts/**: Contains `args.py` with the arguments to configure the classification test, `gnn_arc.py` with the GNN network architecture, and `utils.py` with functions needed for `test.py`.
 
 ## Getting Started
 
 ### Installation
 1. **Clone the repository:**
    ```bash
-   git clone https://your-repository-url
+   git clone https://github.com/mmacrod/caracor-gnn.git
    cd caracor-gnn
    ```
 2. **Install required packages:**
@@ -39,9 +40,9 @@ The main branch of the project contains five files and two directories:
    ```
 
 ### Download the Dataset
-Before you begin training or testing, download the necessary dataset:
+Before you begin testing, download the necessary dataset:
 ```bash
-python3 datasets/download_dataset.py
+python3 download.py
 ```
 
 ## Usage
@@ -57,17 +58,6 @@ python3 datasets/download_dataset.py
   python3 test.py --model_name=loc --testset_name=testset
   ```
 
-### Training Models
-- **Density Classification Training:**
-  ```bash
-  python3 train.py --trainset_name=trainset --valset_name=valset --testset_name=testset --batch_size=50 --gnn_units=88 --gnn_layers=4 --gnn_heads=7 --dropout=0.2 --num_epochs=300 --num_classes=3
-  ```
-
-- **Location Classification Training:**
-  ```bash
-  python3 train.py --trainset_name=trainset --valset_name=valset --testset_name=testset --batch_size=50 --gnn_units=110 --gnn_layers=4 --gnn_heads=6 --dropout=0.2 --num_epochs=300 --num_classes=6
-  ```
-
 ## Support
 For any additional questions or support, please open an issue in the repository, and we will assist you as soon as possible.
 
@@ -76,7 +66,7 @@ For any additional questions or support, please open an issue in the repository,
 If you use this code in your research, please cite:
 
 ### APA
-> Macarulla-Rodríguez, M. et al. (2026). *CARACOR-GNN: ChARcterization of Atrial CardiOmyopathy from body surface potential maps using Graph Neural Networks*. Under review.
+> Macarulla-Rodríguez, M., Sánchez, J., Barrios Espinosa, C., Loewe, A., Zacur, E., Climent, A. M., & Guillem, M. S. (2026). *CARACOR-GNN: ChARcterization of Atrial CardiOmyopathy from body surface potential maps using Graph Neural Networks*. Under review.
 
 ### BibTeX
 ```bibtex

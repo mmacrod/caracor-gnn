@@ -10,7 +10,7 @@
 
 ## Overview
 The CARACOR-GNN model uses Graph Neural Networks to classify the density and location of atrial cardiomyopathy, facilitating advanced cardiac analysis. This document guides you through the setup and use of the CARACOR-GNN for different classification tasks.
-The datasets provided for this project, available via Zenodo, correspond to body surface potential maps (BSPMs) acquired with 128 electrodes, with no missing electrodes and noise-free signals (infinite signal-to-noise ratio, SNR). These datasets are intended to serve as reference data for reproducible and controlled experimental evaluation. The datasets and pretrained models are available at Zenodo (10.5281/zenodo.18457640).
+The datasets provided for this project, available via Zenodo, correspond to body surface potential maps (BSPMs) acquired with 128 electrodes, with no missing electrodes and noise-free signals (infinite signal-to-noise ratio, SNR). These datasets are intended to serve as reference data for reproducible and controlled experimental evaluation. The datasets and pretrained models are available at Zenodo (10.5281/zenodo.18465971).
 
 ## Project Structure
 The main branch of the project contains five files and two directories:
@@ -39,7 +39,7 @@ The main branch of the project contains five files and two directories:
    ```
 
 ### Download the Dataset
-Before you begin testing, download the necessary dataset:
+Before you begin testing, download the necessary dataset and models:
 ```bash
 python3 download.py
 ```

@@ -11,8 +11,8 @@ import os
 import requests
 import zipfile
 
-DATASETS_URL = "https://zenodo.org/record/18457640/files/dataset.zip?download=1"
-MODELS_URL = "https://zenodo.org/record/XXXXXX/files/models.zip?download=1"
+DATASETS_URL = "https://zenodo.org/record/18465971/files/dataset.zip?download=1"
+MODELS_URL = "https://zenodo.org/record/18465971/files/models.zip?download=1"
 
 
 def download_and_extract(url, output_dir, filename):
@@ -36,21 +36,24 @@ def download_and_extract(url, output_dir, filename):
     # Delete compressed file
     os.remove(output_path)
 
-    print(f"Dataset saved to {output_dir}")
+    print(f"Saved to {output_dir}")
 
 
 def main():
     download_and_extract(
         url=DATASETS_URL,
         output_dir="datasets/processed",
-        filename="datasets.zip",
+        filename="dataset.zip",
     )
 
-    # download_file(
-    #     url=MODELS_URL,
-    #     output_dir="models",
-    #     filename="models.zip",
-    # )
+    download_and_extract(
+        url=MODELS_URL,
+        output_dir="models",
+        filename="models.zip",
+    )
+
+    print()
+    print("Done!")
 
 
 if __name__ == "__main__":

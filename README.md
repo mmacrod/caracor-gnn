@@ -65,15 +65,19 @@ For any additional questions or support, please open an issue in the repository,
 If you use this code in your research, please cite:
 
 ### APA
-> Macarulla-Rodríguez, M., Sánchez, J., Barrios Espinosa, C., Loewe, A., Zacur, E., Climent, A. M., & Guillem, M. S. (2026). *CARACOR-GNN: ChARcterization of Atrial CardiOmyopathy from body surface potential maps using Graph Neural Networks*. Under review.
+> Macarulla-Rodríguez, M., Sánchez, J., Barrios Espinosa, C., Loewe, A., Zacur, E., Climent, A. M., & Guillem, M. S. (2026). *A graph neural network framework for characterizing atrial cardiomyopathy from body surface potential maps.* Discover Computing 29, 569 (2026). https://doi.org/10.1007/s10791-026-10439-9
 
 ### BibTeX
 ```bibtex
-@article{caracor2026,
-  title   = {CARACOR-GNN: ChARcterization of Atrial CardiOmyopathy from body surface potential maps using Graph Neural Networks},
-  author  = {Macarulla-Rodr\'iguez, Maria and S\'anchez, Jorge and Barrios Espinosa, Cristian and Loewe, Axel and Zacur, Ernesto and M. Climent, Andreu and Guillem, Mar\'ia S.},
-  journal = {Under review},
-  year    = {2026}
+@article{macarulla2026graph,
+  title={A graph neural network framework for characterizing atrial cardiomyopathy from body surface potential maps},
+  author={Macarulla-Rodr{\'\i}guez, Mar{\'\i}a and S{\'a}nchez, Jorge and Barrios Espinosa, Cristian and Loewe, Axel and Zacur, Ernesto and M. Climent, Andreu and Guillem, Mar{\'\i}a S},
+  journal={Discover Computing},
+  volume={29},
+  number={1},
+  pages={569},
+  year={2026},
+  publisher={Springer}
 }
 
 
